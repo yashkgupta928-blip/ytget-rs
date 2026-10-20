@@ -1,9 +1,9 @@
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $Repo = $env:YTGET_REPO
-if ([string]::IsNullOrWhiteSpace($Repo)) { $Repo = 'YOUR_GITHUB_USERNAME/ytget-rs' }
+if ([string]::IsNullOrWhiteSpace($Repo)) { $Repo = 'yashkgupta928-blip/ytget-rs' }
 if ($Repo -like '*YOUR_GITHUB_USERNAME*' -or $Repo -notmatch '^[^/]+/[^/]+$') {
-    throw 'Set $env:YTGET_REPO to owner/repository or replace YOUR_GITHUB_USERNAME/ytget-rs in install.ps1 and update.ps1 before publishing.'
+    throw 'Set $env:YTGET_REPO to owner/repository or set YTGET_REPO to a different repository if using a fork.'
 }
 $env:YTGET_REPO = $Repo
 $installerUrl = "https://raw.githubusercontent.com/$Repo/main/install.ps1"

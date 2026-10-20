@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ytget-rs installer/updater for Linux and macOS.
-# Set YTGET_REPO=owner/repository or replace the placeholder below before publishing.
+# Optional override: set YTGET_REPO=owner/repository. The default is configured for this repository.
 set -Eeuo pipefail
 
 if [[ "${1:-install}" == "update" ]]; then MODE_LABEL="Update"; else MODE_LABEL="Install"; fi
@@ -11,11 +11,11 @@ if [[ "$MODE" != "install" && "$MODE" != "update" ]]; then
   exit 2
 fi
 
-REPO="${YTGET_REPO:-YOUR_GITHUB_USERNAME/ytget-rs}"
+REPO="${YTGET_REPO:-yashkgupta928-blip/ytget-rs}"
 if [[ "$REPO" == *YOUR_GITHUB_USERNAME* || "$REPO" != */* ]]; then
   cat >&2 <<'MSG'
 Set YTGET_REPO to your GitHub owner/repository before running this script,
-or replace YOUR_GITHUB_USERNAME/ytget-rs in install.sh and update.sh before publishing.
+or set YTGET_REPO to a different repository if using a fork.
 Example: export YTGET_REPO="yourname/ytget-rs"
 MSG
   exit 2

@@ -6,6 +6,10 @@ A mouse-friendly terminal UI for downloading video and audio with yt-dlp. It wor
 
 Supported releases are **Windows x64**, **Linux x86_64 / ARM64**, and **macOS Intel / Apple Silicon**. The scripts install the app into a per-user directory and add that directory to your PATH. They do not require `cargo` or a Rust toolchain on the user's machine.
 
+### Repository configuration
+
+The scripts are configured for [`yashkgupta928-blip/ytget-rs`](https://github.com/yashkgupta928-blip/ytget-rs). To use a fork, set `YTGET_REPO=owner/repository`. The one-line commands below assume the default branch is `main`.
+
 ### Windows (PowerShell)
 
 Open PowerShell and run:
@@ -85,12 +89,17 @@ If the build runs out of memory on a small machine, limit it to one job: `CARGO_
 
 ## Publish a new release
 
-1. Push the complete repository to GitHub and make sure `main` is the default branch.
-2. Replace `YOUR_GITHUB_USERNAME/ytget-rs` in `install.sh`, `update.sh`, `install.ps1`, `update.ps1`, and the example URLs in this README with your actual GitHub `owner/repository`.
-3. On GitHub, open **Releases → Draft a new release**. Choose **Create new tag** and enter `v0.1.0`; set the target to `main`, enter a release title and notes, and click **Publish release**.
-4. Publishing the release starts the **Build and release** workflow. In **Actions**, wait for all five platform build jobs to succeed. The workflow then attaches the prebuilt archives and `SHA256SUMS` to the release.
-5. Check that the release page contains the Windows ZIP, four Unix `.tar.gz` archives, and `SHA256SUMS`. Users can then install without Rust.
-6. For later app releases, commit and push your source changes to `main`, then publish a new release using a new tag such as `v0.1.1`. The install and update scripts always target the latest GitHub Release.
+1. Push the repository to GitHub and make sure `main` is the default branch.
+2. Commit the installer scripts and `.github/workflows/release.yml`; the scripts are already configured for this repository.
+3. Create and push a version tag, for example:
+
+   ```bash
+   git tag v0.1.0
+   git push origin v0.1.0
+   ```
+
+4. In **GitHub → Actions**, wait for the **Build and release** workflow to finish. It builds and tests supported OS targets, attaches prebuilt archives plus `SHA256SUMS` to a GitHub Release, and creates release notes. Users can then install without Rust.
+5. For later app releases, update the version in `Cargo.toml`, commit the changes, and push a new tag such as `v0.1.1`. The install and update scripts always target the latest GitHub Release.
 
 The release workflow currently produces Linux x86_64 and ARM64, macOS Intel and Apple Silicon, and Windows x64 builds. The installer scripts independently update yt-dlp and FFmpeg so dependency updates do not require a new ytget-rs release.
 

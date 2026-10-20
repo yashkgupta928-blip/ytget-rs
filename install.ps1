@@ -4,11 +4,11 @@ param(
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 
-# Set YTGET_REPO=owner/repository or replace the placeholder before publishing.
+# Optional override: set YTGET_REPO=owner/repository. The default is configured for this repository.
 $Repo = $env:YTGET_REPO
-if ([string]::IsNullOrWhiteSpace($Repo)) { $Repo = 'YOUR_GITHUB_USERNAME/ytget-rs' }
+if ([string]::IsNullOrWhiteSpace($Repo)) { $Repo = 'yashkgupta928-blip/ytget-rs' }
 if ($Repo -like '*YOUR_GITHUB_USERNAME*' -or $Repo -notmatch '^[^/]+/[^/]+$') {
-    throw 'Set $env:YTGET_REPO to owner/repository or replace YOUR_GITHUB_USERNAME/ytget-rs in install.ps1 and update.ps1 before publishing.'
+    throw 'Set $env:YTGET_REPO to owner/repository or set YTGET_REPO to a different repository if using a fork.'
 }
 
 $arch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString()
