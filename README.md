@@ -6,22 +6,18 @@ A mouse-friendly terminal UI for downloading video and audio with yt-dlp. It wor
 
 Supported releases are **Windows x64**, **Linux x86_64 / ARM64**, and **macOS Intel / Apple Silicon**. The scripts install the app into a per-user directory and add that directory to your PATH. They do not require `cargo` or a Rust toolchain on the user's machine.
 
-### Before publishing this repository
-
-Replace `YOUR_GITHUB_USERNAME/ytget-rs` in `install.sh`, `update.sh`, `install.ps1`, and `update.ps1` with your actual GitHub `owner/repository` (or have users set `YTGET_REPO=owner/repository`). Push the repository's default branch as `main`; the one-line commands below assume this branch name.
-
 ### Windows (PowerShell)
 
 Open PowerShell and run:
 
 ```powershell
-irm https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/ytget-rs/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/yashkgupta928-blip/ytget-rs/main/install.ps1 | iex
 ```
 
 To update the app and its managed dependencies:
 
 ```powershell
-irm https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/ytget-rs/main/update.ps1 | iex
+irm https://raw.githubusercontent.com/yashkgupta928-blip/ytget-rs/main/update.ps1 | iex
 ```
 
 The script installs to `%LOCALAPPDATA%\Programs\ytget-rs\bin` and adds that directory to your user PATH. Open a new terminal after installation. Close ytget-rs before running the updater so Windows can replace the executable. Windows builds currently target x64.
@@ -29,13 +25,13 @@ The script installs to `%LOCALAPPDATA%\Programs\ytget-rs\bin` and adds that dire
 ### Linux (Bash)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/ytget-rs/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yashkgupta928-blip/ytget-rs/main/install.sh | bash
 ```
 
 Update everything managed by ytget-rs:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/ytget-rs/main/update.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yashkgupta928-blip/ytget-rs/main/update.sh | bash
 ```
 
 The app and yt-dlp are installed in `~/.local/bin`. FFmpeg is installed or upgraded with the distribution's package manager (`apt`, `dnf`, `yum`, `pacman`, `zypper`, or `apk`); the script uses `sudo` when the package manager needs elevated permissions. Arch Linux package updates require a full system upgrade, as required by Arch's package-management model.
@@ -43,13 +39,13 @@ The app and yt-dlp are installed in `~/.local/bin`. FFmpeg is installed or upgra
 ### macOS (Terminal)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/ytget-rs/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yashkgupta928-blip/ytget-rs/main/install.sh | bash
 ```
 
 Update:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/ytget-rs/main/update.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yashkgupta928-blip/ytget-rs/main/update.sh | bash
 ```
 
 The app and yt-dlp are installed in `~/.local/bin`. FFmpeg is managed through Homebrew; if Homebrew is missing, the script invokes Homebrew's official installer. Homebrew may require Xcode Command Line Tools. If installation stops for that reason, run `xcode-select --install` and rerun the installer.
