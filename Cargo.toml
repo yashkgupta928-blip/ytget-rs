@@ -1,0 +1,23 @@
+[package]
+name = "ytget-rs"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Mouse-friendly terminal UI for downloading video and audio with yt-dlp"
+license = "MIT"
+
+[dependencies]
+anyhow = "1"
+crossterm = "0.28"
+dirs = "7"
+ratatui = "0.29"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Settings chosen so a release build also fits on small machines (about 2 GB RAM):
+# no LTO and plenty of codegen units keep peak memory low.
+[profile.release]
+opt-level = 3
+lto = false
+codegen-units = 16
+strip = true
